@@ -1,6 +1,8 @@
 # Spring-Cafeteria
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Column Name      | Data Type                                     | Constraints             |
+|------------------|----------------------------------------------|-------------------------|
+| `id`             | `bigint`                                     | NOT NULL, PRIMARY KEY   |
+| `nickname`       | `varchar(30)`                                | DEFAULT NULL            |
+| `profile_image`  | `varchar(255)`                               | DEFAULT NULL            |
+| `email`          | `varchar(30)`                                | DEFAULT NULL            |
