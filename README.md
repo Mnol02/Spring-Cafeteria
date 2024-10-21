@@ -12,9 +12,9 @@ Member Table
 Menu Table
 | Column Name | Data Type | Constraints                               |
 |-------------|-----------|-------------------------------------------|
-| 'ID'          | int       | NOT NULL, AUTO_INCREMENT, PRIMARY KEY    |
-| 'NAME'        | varchar(32) | NOT NULL                                |
-| 'PRICE'       | decimal(10,2) | NOT NULL                             |
+| `ID`          | `int`       | NOT NULL, AUTO_INCREMENT, PRIMARY KEY    |
+| `NAME`        | `varchar(32)` | NOT NULL                                |
+| `PRICE`       | `decimal(10,2)` | NOT NULL                             |
 
 Cart Table
 | Column Name      | Data Type                                     | Constraints                          |
@@ -25,7 +25,7 @@ Cart Table
 Cart_Item Table
 | Column Name | Data Type | Constraints                               |
 |-------------|-----------|-------------------------------------------|
-| 'ID'          | int       | NOT NULL, AUTO_INCREMENT, PRIMARY KEY    |
-| 'CART_ID'     | int       | NOT NULL, KEY                             |
-| 'MENU_ID'     | int       | NOT NULL, KEY                             |
-| 'QUANTITY'    | int       | NOT NULL                                  |
+| `ID`          | `int`       | NOT NULL, AUTO_INCREMENT, PRIMARY KEY    |
+| `CART_ID`     | `int`       | NOT NULL, KEY                             |
+| `MENU_ID`     | `int`       | NOT NULL, KEY                             |
+| `QUANTITY`    | `int`       | NOT NULL                                  |
