@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 리뷰</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #6c757d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #6c757d;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>메뉴 리뷰</h1>
+	<div class="review-form">
+        <h2>리뷰 작성하기</h2>
+        <form action="/submitReview" method="post">
+            <div class="form-group">
+                <label for="memberId">회원 ID</label>
+                <input type="text" id="memberId" name="memberId" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">평점 (1-5)</label>
+                <input type="number" id="rating" name="rating" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">댓글</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+            </div>
+            <button type="submit">리뷰 제출</button>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>회원 ID</th>
+                <th>평점</th>
+                <th>댓글</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 리뷰 목록 출력 -->
+            <tr th:each="review : ${reviews}">
+                <td th:text="${review.memberId}"></td>
+                <td th:text="${review.rating}"></td>
+                <td th:text="${review.comment}"></td>
+                <td th:text="${#dates.format(review.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/">Back to Menu</a>
+
+</body>
+</html>

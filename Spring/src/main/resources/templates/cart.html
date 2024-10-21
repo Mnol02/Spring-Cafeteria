@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* 밝은 배경 */
+        }
+
+        .container {
+            background-color: #fff; /* 카드 효과를 위한 흰색 배경 */
+            border-radius: 5px; /* 둥근 모서리 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 섀도우 효과 */
+            padding: 20px; /* 패딩 */
+        }
+
+        h1 {
+            color: #6c757d; /* 제목 색상 */
+            text-align: center; /* 중앙 정렬 */
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .table thead {
+            background-color: #6c757d; /* 헤더 배경 색상 */
+            color: #fff; /* 헤더 글자 색상 */
+        }
+
+        .table tbody {
+            background-color: #ffffff; /* tbody 흰색 배경 */
+        }
+
+        .btn-primary {
+            background-color: #6c757d; /* 버튼 배경 색상 */
+            border-color: #6c757d; /* 버튼 테두리 색상 */
+        }
+
+        .btn-primary:hover {
+            background-color: #5a6268; /* 버튼 호버 색상 */
+            border-color: #545b62; /* 버튼 호버 테두리 색상 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>장바구니</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">상품명</th>
+                    <th scope="col">가격</th>
+                    <th scope="col">수량</th>
+                    <th scope="col">합계</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+			    <th:block th:if="${cartItems.isEmpty()}">
+			        <tr>
+			            <td colspan="4" class="text-center">장바구니에 상품이 없습니다.</td>
+			        </tr>
+			    </th:block>
+			    <th:block th:if="${not cartItems.isEmpty()}">
+			        <tr th:each="cartItem : ${cartItems}">
+			            <td th:text="${cartItem.menu.name}"></td> <!-- Assumes Menu has a getName() method -->
+			            <td th:text="${cartItem.menu.price}"></td> <!-- Assumes Menu has a getPrice() method -->
+			            <td th:text="${cartItem.quantity}"></td>
+			            <td th:text="${cartItem.menu.price * cartItem.quantity}"></td> <!-- Calculate total for that item -->
+			        </tr>
+			        <tr>
+			            <td colspan="3" class="text-right">총합:</td>
+			            <!--<td th:text="${totalPrice}"></td>  Display total price of the cart -->
+			        </tr>
+			    </th:block>
+			</tbody>
+        </table>
+        <button class="btn btn-primary btn-block">주문하기</button>
+    </div>
+</body>
+</html>
