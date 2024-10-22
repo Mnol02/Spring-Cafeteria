@@ -1,5 +1,8 @@
 package com.example.entity;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +29,9 @@ public class Review {
 
     private int rating;
     private String comment;
-
+    
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
     
     // 기본 생성자
     public Review() {
@@ -38,6 +43,7 @@ public class Review {
         this.member = member;
         this.rating = rating;
         this.comment = comment;
+        this.createdAt = LocalDateTime.now();
     }
     
 	public Long getId() {
@@ -78,6 +84,14 @@ public class Review {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = LocalDateTime.now();
 	}
 
     

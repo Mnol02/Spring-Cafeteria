@@ -52,7 +52,7 @@ public class CartController {
                 model.addAttribute("message", "장바구니가 비어 있습니다.");
             }
         } else {
-            model.addAttribute("message", "로그인이 필요합니다.");
+            return "/login";
         }
 
         return "cart";

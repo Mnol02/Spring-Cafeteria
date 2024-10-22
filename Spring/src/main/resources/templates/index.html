@@ -69,6 +69,85 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    
+                    <div class="col mb-5" th:each="menu : ${menus}" th:if="${menu.id == 2}">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets/menu2.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder" th:text="${menu.name}"></h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span th:text="${menu.price}"></span>
+                                </div>
+                            </div>
+                           <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <form th:action="@{/review/{id}(id=${menu.id})}" class="d-flex justify-content-center">
+								    <div class="text-center">
+									    <button type="submit" class="btn btn-outline-dark mt-auto">Review</button>
+									</div>
+								</form>
+                            </div>
+                            
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <form action="/add-to-cart" method="post" class="d-flex justify-content-center">
+							        <input type="hidden" name="menuId" th:value="${menu.id}" />
+							        <!--<input type="number" name="quantity" th:value="1" min="1" max="10" class="btn btn-outline-dark mt-auto" style="width: 70px; margin-right: 10px;" />-->
+							        <button type="submit" class="btn btn-outline-dark mt-auto">Add to cart</button>
+							    </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5" th:each="menu : ${menus}" th:if="${menu.id == 1}">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets/menu1.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder" th:text="${menu.name}"></h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span th:text="${menu.price}"></span>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <form th:action="@{/review/{id}(id=${menu.id})}" class="d-flex justify-content-center">
+								    <div class="text-center">
+									    <button type="submit" class="btn btn-outline-dark mt-auto">Review</button>
+									</div>
+								</form>
+                            </div>
+                            
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <form action="/add-to-cart" method="post" class="d-flex justify-content-center">
+							        <input type="hidden" name="menuId" th:value="${menu.id}" />
+							        <!--<input type="number" name="quantity" th:value="1" min="1" max="10" class="btn btn-outline-dark mt-auto" style="width: 70px; margin-right: 10px;" />-->
+							        <button type="submit" class="btn btn-outline-dark mt-auto">Add to cart</button>
+							    </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
@@ -205,72 +284,6 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5" th:each="menu : ${menus}" th:if="${menu.id == 2}">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="assets/menu2.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder" th:text="${menu.name}"></h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span th:text="${menu.price}"></span>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5" th:each="menu : ${menus}" th:if="${menu.id == 1}">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="assets/menu1.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder" th:text="${menu.name}"></h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span th:text="${menu.price}"></span>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <form th:action="@{/review/{id}(id=${menu.id})}" class="d-flex justify-content-center">
-								    <div class="text-center">
-									    <button type="submit" class="btn btn-outline-dark mt-auto">Review</button>
-									</div>
-								</form>
-                            </div>
-                            
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <form action="/add-to-cart" method="post" class="d-flex justify-content-center">
-							        <input type="hidden" name="menuId" th:value="${menu.id}" />
-							        <!--<input type="number" name="quantity" th:value="1" min="1" max="10" class="btn btn-outline-dark mt-auto" style="width: 70px; margin-right: 10px;" />-->
-							        <button type="submit" class="btn btn-outline-dark mt-auto">Add to cart</button>
-							    </form>
                             </div>
                         </div>
                     </div>

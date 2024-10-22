@@ -27,17 +27,17 @@ public class ReviewController {
     }
 
     @GetMapping("/{menuId}")
-    public String getReviews(@PathVariable("menuId") Long menuId, Model model) {
+    public String getReviews(@PathVariable("menuId") Long menuId, Model model, HttpSession session) {
         List<Review> review = reviewService.getMenuReviews(menuId);
         model.addAttribute("reviews", review);
         return "review"; // reviews.html 파일로 이동
     }
-    @PostMapping("/{menuId}/submitReview")
-    public String submitReview(@PathVariable Long menuId, @RequestParam int rating, @RequestParam String comment, HttpSession session) {
+    @PostMapping("/submitReview")
+    public String submitReview(@RequestParam("menuId") Long menuId, @RequestParam("rating") int rating, @RequestParam("comment") String comment, HttpSession session) {
         // 리뷰를 객체로 만들어서 저장하는 로직을 구현합니다.
     	Long id = (Long) session.getAttribute("id");
         reviewService.createReview(menuId, id, rating, comment); // 리뷰 저장 서비스 호출
 
-        return "review"; // 리뷰 제출 후 다시 메인 페이지로 리다이렉트
+        return "redirect:/review/" + menuId; // menuId로 리다이렉트
     }
 }

@@ -14,9 +14,9 @@ import com.example.repository.ReviewRepository;
 
 @Service
 public class ReviewService {
+	
 	@Autowired
     private ReviewRepository reviewRepository;
-	
 	@Autowired
     private MenuRepository menuRepository;
     @Autowired
@@ -25,12 +25,13 @@ public class ReviewService {
     public void createReview(Long menuId, Long id, int rating, String comment) {
     	
     	Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Member not found"));
-    	Menu menu = menuRepository.findById(id).orElseThrow(() -> new RuntimeException("Menu not found"));
+    	Menu menu = menuRepository.findById(menuId).orElseThrow(() -> new RuntimeException("Menu not found"));
     	Review review = new Review();
     	review.setMenu(menu);
     	review.setMember(member);
     	review.setRating(rating);
     	review.setComment(comment);
+    	review.setCreatedAt(null);
     	reviewRepository.save(review);
     }
 
