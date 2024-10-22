@@ -32,8 +32,8 @@ public class ReviewController {
         model.addAttribute("reviews", review);
         return "review"; // reviews.html 파일로 이동
     }
-    @PostMapping("/{menuId}/submitReview")
-    public String submitReview(@PathVariable Long menuId, @RequestParam int rating, @RequestParam String comment, HttpSession session) {
+    @PostMapping("/submitReview")
+    public String submitReview(Long menuId, @RequestParam int rating, @RequestParam String comment, HttpSession session) {
         // 리뷰를 객체로 만들어서 저장하는 로직을 구현합니다.
     	Long id = (Long) session.getAttribute("id");
         reviewService.createReview(menuId, id, rating, comment); // 리뷰 저장 서비스 호출
