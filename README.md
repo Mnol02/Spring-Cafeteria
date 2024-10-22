@@ -40,3 +40,5 @@ Review Table
 | `COMMENT`   | `text`    |                                           |
 | `QUANTITY`  | `int`     | NOT NULL                                  |
 | `CREATED_AT`| `timestamp` | DEFAULT CURRENT_TIMESTAMP               |
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
