@@ -43,6 +43,4 @@ Review Table
 | `QUANTITY`  | `int`     | NOT NULL                                  |
 | `CREATED_AT`| `timestamp` | DEFAULT CURRENT_TIMESTAMP               |
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Mnol02&hide=contribs,prs&show_icons=true&theme=graywhite)
-
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
