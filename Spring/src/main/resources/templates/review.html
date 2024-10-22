@@ -60,6 +60,9 @@
 	<div class="review-form">
         <h2>리뷰 작성하기</h2>
         <form action="/submitReview" method="post">
+		<div class="form-group">
+                <input type="hidden" name="menuId" value="${review.menuId}">
+            </div>
             <div class="form-group">
                 <label for="memberId">회원 ID</label>
                 <input type="text" id="memberId" name="memberId" required>
