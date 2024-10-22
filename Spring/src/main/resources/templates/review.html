@@ -61,11 +61,7 @@
         <h2>리뷰 작성하기</h2>
         <form action="/submitReview" method="post">
 		<div class="form-group">
-                <input type="hidden" name="menuId" value="${review.menuId}">
-            </div>
-            <div class="form-group">
-                <label for="memberId">회원 ID</label>
-                <input type="text" id="memberId" name="memberId" required>
+                <input type="hidden" name="menuId" value="${review.menu.id}">
             </div>
             <div class="form-group">
                 <label for="rating">평점 (1-5)</label>
@@ -90,7 +86,7 @@
         <tbody>
             <!-- 리뷰 목록 출력 -->
             <tr th:each="review : ${reviews}">
-                <td th:text="${review.memberId}"></td>
+                <td th:text="${review.member.id}"></td>
                 <td th:text="${review.rating}"></td>
                 <td th:text="${review.comment}"></td>
                 <td th:text="${#dates.format(review.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
