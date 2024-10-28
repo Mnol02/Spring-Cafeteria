@@ -13,6 +13,7 @@ import com.example.entity.Member;
 import com.example.service.MemberService;
 import com.example.service.MenuService;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
@@ -71,14 +72,20 @@ public class MainController {
     }
 
     @GetMapping("/callback")
-    public String callback(@RequestParam("code") String code, HttpSession session) throws IOException {
+    public String callback(@RequestParam("code") String code, HttpSession session, HttpServletResponse response) throws IOException {
         String accessToken = memberService.getAccessTokenFromKakao(client_id, code);
         Member member = memberService.getUserInfo(accessToken);
-        log.info("member id : {} connected", member.getId());
-        session.setAttribute("id", member.getId());
+		/*
+		 * log.info("member id : {} connected", member.getId());
+		 * session.setAttribute("id", member.getId());
+		 */
          //로그인
         memberService.loginUser(member);
         session.setAttribute("accessToken", accessToken);
+        // 세션에 member 객체 저장
+        session.setAttribute("member", member);
+        // URL rewriting을 피하기 위한 설정
+        response.encodeRedirectURL("/");  // redirect 시 URL 재작성을 방지합니다.
         return "redirect:/";
     }
 }

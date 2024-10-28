@@ -6,90 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메뉴 리뷰</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
-            margin: 0;
-            padding: 20px;
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    h1 {
+        color: #6c757d;
+        font-size: 1.5em; /* 기본 폰트 크기 설정 */
+    }
+
+    .review-form {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="number"], textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 15px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%; /* 버튼을 전체 너비로 설정 */
+    }
+
+    button:hover {
+        background-color: #5a6268;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e9ecef;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: white;
+        background-color: #6c757d;
+        padding: 10px 15px;
+        border-radius: 5px;
+        width: 100%; /* 전체 너비 사용 */
+        text-align: center; /* 중앙 정렬 */
+    }
+
+    a:hover {
+        background-color: #5a6268;
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 1.3em; /* 폰트 크기 조정 */
         }
         
-        h1 {
-            color: #6c757d;
-        }
-
         .review-form {
-            background-color: #ffffff;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="number"], textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
+            padding: 15px; /* 양쪽 패딩 조정 */
         }
 
         button {
-            padding: 10px 15px;
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 10px; /* 버튼 패딩 조정 */
         }
-
-        button:hover {
-            background-color: #5a6268;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
+        
         th, td {
-            border: 1px solid #dee2e6;
-            padding: 10px;
-            text-align: left;
+            font-size: 0.9em; /* 테이블 폰트 조정 */
         }
-
-        th {
-            background-color: #6c757d;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #e9ecef;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            color: white;
-            background-color: #6c757d;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        a:hover {
-            background-color: #5a6268;
-        }
-    </style>
+    }
+	</style>
 </head>
 <body>
 

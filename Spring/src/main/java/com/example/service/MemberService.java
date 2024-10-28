@@ -107,6 +107,7 @@ public class MemberService {
     public void loginUser(Member member) {
 		if (memberRepository.findById(member.getId()).isPresent()) {
 			log.info("login successed");
+			
             return ; // 이미 등록된 사용자면 그냥 리턴
         }
 		memberRepository.save(member);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Cart;
 import com.example.entity.CartItem;
+import com.example.entity.Member;
 import com.example.repository.CartRepository;
 import com.example.service.CartService;
 
@@ -27,19 +28,21 @@ public class CartController {
     @PostMapping("/add-to-cart")
     public String addToCart(@RequestParam("menuId") Long menuId, @RequestParam("quantity") int quantity, HttpSession session) {
 
-    	Long id = (Long) session.getAttribute("id");
-    	if(id == null) {
+    	Member member = (Member) session.getAttribute("member");
+    	if(member == null) {
     		return "redirect:/login";
     	}
+    	Long id = member.getId();
     	cartService.addItemToCart(id, menuId, quantity);
 
         return "redirect:/"; // 장바구니 페이지로 리다이렉트 합니다.
     }
     @GetMapping("/cart")
     public String showCart(HttpSession session, Model model) {
-        Long id = (Long) session.getAttribute("id");
+    	Member member = (Member) session.getAttribute("member");
 
-        if (id != null) {
+        if (member != null) {
+        	Long id = member.getId();
             // 주어진 ID로 Cart를 찾습니다
             Optional<Cart> optionalCart = cartRepository.findByMemberId(id);
             
