@@ -84,8 +84,7 @@ public class MainController {
         session.setAttribute("accessToken", accessToken);
         // 세션에 member 객체 저장
         session.setAttribute("member", member);
-        // URL rewriting을 피하기 위한 설정
-        response.encodeRedirectURL("/");  // redirect 시 URL 재작성을 방지합니다.
+
         return "redirect:/";
     }
 }
