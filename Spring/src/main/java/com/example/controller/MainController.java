@@ -75,15 +75,12 @@ public class MainController {
     public String callback(@RequestParam("code") String code, HttpSession session, HttpServletResponse response) throws IOException {
         String accessToken = memberService.getAccessTokenFromKakao(client_id, code);
         Member member = memberService.getUserInfo(accessToken);
-		/*
-		 * log.info("member id : {} connected", member.getId());
-		 * session.setAttribute("id", member.getId());
-		 */
-         //로그인
+
+        //로그인
         memberService.loginUser(member);
-        session.setAttribute("accessToken", accessToken);
         // 세션에 member 객체 저장
         session.setAttribute("member", member);
+        session.setAttribute("accessToken", accessToken);
 
         return "redirect:/";
     }
