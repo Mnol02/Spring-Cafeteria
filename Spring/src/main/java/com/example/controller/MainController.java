@@ -13,7 +13,6 @@ import com.example.entity.Member;
 import com.example.service.MemberService;
 import com.example.service.MenuService;
 
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
@@ -72,7 +71,7 @@ public class MainController {
     }
 
     @GetMapping("/callback")
-    public String callback(@RequestParam("code") String code, HttpSession session, HttpServletResponse response) throws IOException {
+    public String callback(@RequestParam("code") String code, HttpSession session) throws IOException {
         String accessToken = memberService.getAccessTokenFromKakao(client_id, code);
         Member member = memberService.getUserInfo(accessToken);
 
