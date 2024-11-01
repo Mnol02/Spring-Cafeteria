@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -26,8 +27,10 @@ public class Cart {
     @OneToMany(mappedBy = "cart")
     private List<CartItem> cartItems;
     
+    
     // 기본 생성자 추가
     public Cart() {
+    	this.cartItems = new ArrayList<>(); // 생성자에서 초기화
     }
     public Cart(Member member, List<CartItem> cartItems) {
         this.member = member;

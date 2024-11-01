@@ -38,5 +38,5 @@ public class ReviewService {
     public List<Review> getMenuReviews(Long menuId) {
         return reviewRepository.findByMenuId(menuId);
     }
-    // 추가적인 비즈니스 로직을 구현하세요.
+    //추가 로직
 }

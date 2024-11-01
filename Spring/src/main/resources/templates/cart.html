@@ -79,7 +79,13 @@
 			    </th:block>
 			</tbody>
         </table>
-        <button class="btn btn-primary btn-block">주문하기</button>
+        <form action="/ready" class="d-flex" method="post">
+	        <button type="submit" class="btn btn-outline-dark">
+	            <i class="bi-cart-fill me-1"></i>
+                주문하기
+	        </button>
+	    </form>
+        <!--<button class="btn btn-primary btn-block">주문하기</button>-->
     </div>
 </body>
 </html>
