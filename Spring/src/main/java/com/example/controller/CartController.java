@@ -56,7 +56,7 @@ public class CartController {
                 Cart cart = optionalCart.get(); // Optional에서 Cart를 가져옵니다
                 List<CartItem> cartItems = cart.getCartItems(); // Cart에서 CartItem을 가져옵니다
                 model.addAttribute("cartItems", cartItems); // 모델에 CartItem 추가
-                // model.addAttribute("totalPrice", cart.calculateTotalPrice()); // 총 가격 추가
+                model.addAttribute("totalPrice", cart.calculateTotalPrice()); // 총 가격 추가
             } else {
                 model.addAttribute("message", "장바구니가 비어 있습니다.");
             }

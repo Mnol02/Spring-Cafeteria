@@ -1,162 +1,210 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메뉴 리뷰</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #343a40;
-        margin: 0;
-        padding: 20px;
-    }
-    
-    h1 {
-        color: #6c757d;
-        font-size: 1.5em; /* 기본 폰트 크기 설정 */
-    }
-
-    .review-form {
-        background-color: #ffffff;
-        border: 1px solid #dee2e6;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    input[type="number"], textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ced4da;
-        border-radius: 5px;
-    }
-
-    button {
-        padding: 10px 15px;
-        background-color: #6c757d;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%; /* 버튼을 전체 너비로 설정 */
-    }
-
-    button:hover {
-        background-color: #5a6268;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    th, td {
-        border: 1px solid #dee2e6;
-        padding: 10px;
-        text-align: left;
-    }
-
-    th {
-        background-color: #6c757d;
-        color: white;
-    }
-
-    tr:nth-child(even) {
-        background-color: #e9ecef;
-    }
-
-    a {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: white;
-        background-color: #6c757d;
-        padding: 10px 15px;
-        border-radius: 5px;
-        width: 100%; /* 전체 너비 사용 */
-        text-align: center; /* 중앙 정렬 */
-    }
-
-    a:hover {
-        background-color: #5a6268;
-    }
-
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 1.3em; /* 폰트 크기 조정 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column; /* 주축 방향을 세로로 설정 */
+            align-items: center; /* 가로 중앙 정렬 */
         }
         
+        h1 {
+            color: #4a4e69;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .container {
+            display: flex; /* 가로로 배치 */
+            max-width: 800px; /* 최대 너비 설정 */
+            width: 100%;
+        }
+
         .review-form {
-            padding: 15px; /* 양쪽 패딩 조정 */
+            background-color: #ffffff;
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            flex-basis: 50%; /* 왼쪽 이미지와 같이 50%의 너비를 가짐 */
+            margin-left: 20px; /* 오른쪽 여백 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-image {
+            flex-basis: 100%; /* 오른쪽 영역과 같이 50%의 너비를 가짐 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-image img {
+            max-width: 100%; /* 이미지 크기 조절 */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"], textarea {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        textarea {
+            resize: none;
         }
 
         button {
-            padding: 10px; /* 버튼 패딩 조정 */
+            padding: 12px 20px;
+            background-color: #4a4e69;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
         }
-        
-        th, td {
-            font-size: 0.9em; /* 테이블 폰트 조정 */
+
+        button:hover {
+            background-color: #22223b;
         }
-    }
-	</style>
+
+        .review-list {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background-color: #ffffff;
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+            color: #4a4e69;
+        }
+
+        .review-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .review-card span {
+            display: block;
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: white;
+            background-color: #4a4e69;
+            padding: 12px 20px;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #22223b;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .review-form {
+                padding: 20px;
+            }
+
+            button {
+                padding: 10px;
+            }
+
+            .container {
+                flex-direction: column; /* 작은 화면에서는 세로 방향으로 변경 */
+            }
+        }
+    </style>
 </head>
 <body>
 
     <h1>메뉴 리뷰</h1>
-    <div class="review-form">
-        <h2>리뷰 작성하기</h2>
-        <form action="/review/submitReview" method="post">
-            <div class="form-group">
-                <input type="hidden" name="menuId" th:value="${menuId}">
-        <form action="/submitReview" method="post">
-		<div class="form-group">
-                <input type="hidden" name="menuId" value="${review.menu.id}">
+    <div class="container">
+        <div class="sidebar-image">
+            <img src="/assets/menu2.jpg" alt="메뉴 이미지">
+        </div>
+        <div class="review-form">
+            <div class="form-header">
+                <h2>리뷰 작성하기</h2>
             </div>
-            <div class="form-group">
-                <label for="rating">평점 (1-5)</label>
-                <input type="number" id="rating" name="rating" min="1" max="5" required>
-            </div>
-            <div class="form-group">
-                <label for="comment">댓글</label>
-                <textarea id="comment" name="comment" rows="4" required></textarea>
-            </div>
-            <button type="submit">리뷰 제출</button>
-        </form>
+            <form action="/review/submitReview" method="post">
+                <div class="form-group">
+                    <input type="hidden" name="menuId" th:value="${menuId}">
+                </div>
+                <div class="form-group">
+                    <label for="rating">평점 (1-5)</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">댓글</label>
+                    <textarea id="comment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit">리뷰 제출</button>
+            </form>
+        </div>
     </div>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>회원 ID</th>
-                <th>평점</th>
-                <th>댓글</th>
-                <th>작성일</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 리뷰 목록 출력 -->
-            <tr th:each="review : ${reviews}">
-                <td th:text="${review.member.id}"></td>
-                <td th:text="${review.rating}"></td>
-                <td th:text="${review.comment}"></td>
-                <td th:text="${review.createdAt.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm:ss'))}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="/">Back to Menu</a>
+
+    <div class="review-list">
+        <!-- 리뷰 목록 출력 -->
+        <div class="review-card" th:each="review : ${reviews}">
+            <h3 th:text="${review.member.id}"></h3>
+            <p th:text="'평점: ' + ${review.rating}"></p>
+            <p th:text="${review.comment}"></p>
+            <span th:text="${review.createdAt.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm:ss'))}"></span>
+        </div>
+    </div>
+
+    <a href="/">메뉴로 돌아가기</a>
 
 </body>
 </html>

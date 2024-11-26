@@ -1,7 +1,5 @@
 package com.example.entity;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +12,7 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	private String name;
-    private BigDecimal price;
+    private int price;
     
     
 	public Long getId() {
@@ -29,10 +27,10 @@ public class Menu {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public BigDecimal getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(BigDecimal price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
     

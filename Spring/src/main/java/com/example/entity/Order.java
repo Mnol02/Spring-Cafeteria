@@ -1,7 +1,7 @@
 package com.example.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -27,10 +27,24 @@ public class Order {
 	private LocalDateTime orderDate;
 
     private String status;
-
+    
+	private int total;
+	
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
-
+    
+    // 기본 생성자 추가
+    public Order() {
+    	this.orderItems = new ArrayList<>(); // 생성자에서 초기화
+    }
+    public Order(Member member, List<OrderItem> orderItems) {
+        this.member = member;
+        this.orderItems = orderItems;
+        this.orderDate = LocalDateTime.now();
+        this.status = "PENDING";
+        this.total = calculateTotalPrice(); // total 계산하여 초기화
+    }
+    
 	public Long getId() {
 		return id;
 	}
@@ -71,13 +85,23 @@ public class Order {
 		this.orderItems = orderItems;
 	}
 
-	public BigDecimal getTotal() {
+	public int getTotal() {
 		return total;
 	}
 
-	public void setTotal(BigDecimal total) {
+	public void setTotal(int total) {
 		this.total = total;
 	}
 
-	private BigDecimal total;
+	
+	public int calculateTotalPrice() {
+	    int totalPrice = 0;
+
+	    for (OrderItem orderItem : orderItems) {
+	        // 메뉴의 가격과 수량을 곱하여 총 가격에 더합니다.
+	    	totalPrice += orderItem.getMenu().getPrice() * orderItem.getQuantity();
+	    }
+
+	    return totalPrice;
+	}
 }

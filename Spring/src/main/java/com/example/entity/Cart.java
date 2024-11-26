@@ -63,5 +63,14 @@ public class Cart {
 	public void addCartItem(CartItem cartItem) {
 	    this.cartItems.add(cartItem);
 	}
-    
+	public int calculateTotalPrice() {
+	    int totalPrice = 0;
+
+	    for (CartItem cartItem : cartItems) {
+	        // 메뉴의 가격과 수량을 곱하여 총 가격에 더합니다.
+	        totalPrice += cartItem.getMenu().getPrice() * cartItem.getQuantity();
+	    }
+
+	    return totalPrice;
+	}
 }

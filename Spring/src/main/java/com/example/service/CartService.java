@@ -66,6 +66,7 @@ public class CartService {
             cartItemRepository.deleteById(cartItemId);
         }
     }
+    
 
     public Cart getCart(Long id) {
         return cartRepository.findByMemberId(id).orElse(null);
@@ -77,6 +78,6 @@ public class CartService {
         
         return new ArrayList<>(cart.getCartItems());
     }
-
-    // 추가 기능 구현
+    
+    // 추가 기능 구현...
 }
