@@ -24,7 +24,7 @@ Menu Table
 |-------------|-----------|-------------------------------------------|
 | ID | int | NOT NULL, AUTO_INCREMENT, PRIMARY KEY |
 | NAME | varchar(32) | NOT NULL |
-| PRICE | decimal(10,2) | NOT NULL |
+| PRICE | int | NOT NULL |
 
 Cart Table
 | Column Name | Data Type | Constraints |
